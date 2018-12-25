@@ -21,13 +21,14 @@ sp = BeautifulSoup(html.text,'html.parser')
 data = sp.find_all("td", class_="t_f")
                  
 #data2 = data.find_all("td", class_="t_f")
-result = '下載項目' in data[2]
+str1 = data[5].text
+print(str1)
+
+result = str1.find('心得：')
 print(result)
 
+print("字串長度為：" , len(str1))
 
-string1 = '下載項目123'
-string2 = '下'
-result2 = string1.find(string2)
-print( result2 )
+print(str1.split('心得：')[1])
 
 print("Done！")
