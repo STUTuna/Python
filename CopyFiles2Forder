@@ -1,0 +1,26 @@
+import os,sys,shutil
+from os import listdir, walk
+from os.path import isfile, isdir, join
+
+def main(input_path,out_path):
+    for dirPath, dirNames, fileNames in walk(input_path):
+        for f in fileNames:
+            last_name = f.split('.')[-1]
+            
+            if(last_name == 'DS_Store'):
+                print('i am in continue')
+                continue
+            else:
+                fullFilePath = join(dirPath,f)
+                if isfile(fullFilePath):
+                    print('input：\n' + fullFilePath)
+                    new_out_path = out_path + f
+                    print('output：\n' + new_out_path)
+                    shutil.copy(fullFilePath,new_out_path)
+
+if __name__ == "__main__":
+    print('run...')
+    output_path = './out/'
+    input_dir_path = sys.argv[1]# 音檔來源資料夾
+    main(input_dir_path, output_path)
+    print('Done')
